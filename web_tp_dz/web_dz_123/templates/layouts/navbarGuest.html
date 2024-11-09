@@ -1,0 +1,18 @@
+{% load static %}
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url "index" %}">
+            <img src="{% static 'logo.jpg' %}" width="30" height="30" class="d-inline-block align-text-top">
+            AskMe
+          </a>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit"><a href = "{% url "ask" %}">ASK</a></button>
+      </form>
+      <div class = "d-flex justify-content-between gap-3"> 
+            <button id="loginButton"><a href = "{% url "login" %}">Log in</a></button>
+            <a href = "{% url "signup" %}">Sign up!</a>
+      </div>
+    </div>
+    </div>
+  </nav>

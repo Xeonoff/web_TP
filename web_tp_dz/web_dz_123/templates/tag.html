@@ -3,8 +3,8 @@
 
                 {% block content %}
                 <div class = "d-flex align-items-center gap-3">
-                    <h3>New Questions</h3>
-                    <a href = "{% url "hot" %}">Hot questions</a>
+                    <h3>{{tag}}</h3>
+                    <a href = "{% url "index" %}">All questions</a>
                 </div>
 
 
@@ -12,9 +12,8 @@
                     {% for question in questions %}
                         {% include "layouts/questionCard.html" with item=question %}
                     {% endfor %}
-
                     {% if questions %}
                         {% include "layouts/pagination.html" with page_obj=questions %}
                     {% endif %}
                 </div>
-{% endblock %}
+                {% endblock %}

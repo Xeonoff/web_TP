@@ -1,0 +1,26 @@
+{% load static %}
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'logo.jpg' %}" width="30" height="30" class="d-inline-block align-text-top">
+            AskMe
+          </a>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit"> <a href = "{% url "ask" %}">ASK</a></button>
+      </form>
+      <div class = "d-flex justify-content-between gap-3"> 
+        <div>
+            <img src="{% static 'avatar.jpg' %}" width = "50" height = "50">
+        </div>
+        <div class = "d-flex flex-column justify-content-between"> 
+            <div>Just_User</div>
+            <div>
+                <a href = "/settings">Settings</a>
+                <button id="logoutButton"><a href = "#">Log out</a></button>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </nav>
