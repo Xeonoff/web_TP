@@ -10,9 +10,10 @@
 
                 <div class = "col-8">
                     {% for question in questions %}
-                        {% include "layouts/questioncard.html" with item=question %}
+                        {% include "layouts/questionCard.html" with item=question %}
                     {% endfor %}
-                    
-                    {% include "layouts/pagination.html" with page_obj=questions %}
+                    {% if questions %}
+                        {% include "layouts/pagination.html" with page_obj=questions %}
+                    {% endif %}
                 </div>
 {% endblock %}

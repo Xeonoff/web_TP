@@ -1,0 +1,37 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+                {% block content %}
+                <div class = "row mt-2">
+                    <div class = "col-3">
+                        <img class="rounded-circle border" src="{% static 'avatar.jpg' %}" height="150" width="150">
+                    </div>
+                </div>
+                <h3>Profile of: {{ member.user.username }}</h3>
+                    <div class = "col-8">
+                        <div class = "row mt-2">
+                            <div class = "col-3">
+                                <p class = "text-start fs-5">Id: {{ member.id }}</p>
+                            </div>
+                        </div>
+                        <div class = "row mt-2">
+                            <div class = "col-3">
+                                <p class = "text-start fs-5">Email: {{ member.user.email }} </p>
+                            </div>
+                        </div>
+                        <div class = "row mt-2">
+                            <div class = "col-3">
+                                <p class = "text-start fs-5">Nickname: {{member.nickname}} </p>
+                            </div>
+                        </div>
+                        <div class = "row mt-2">
+                            <div class = "col-3">
+                                <p class = "text-start fs-5">Likes of questions: {{member.likes_count_question}} </p>
+                            </div>
+                        </div>
+                        <div class = "row mt-2">
+                            <div class = "col-3">
+                                <p class = "text-start fs-5">Likes of answers: {{member.likes_count_answer}} </p>
+                            </div>
+                        </div>
+                    </div>
+{% endblock %}

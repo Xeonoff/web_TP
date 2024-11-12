@@ -29,4 +29,5 @@ urlpatterns = [
     path('tag/<str:name>/', views.tag, name='tag'),
     path('hot/', views.hot, name='hot'),
     path('settings/', views.settings, name='profile_editting'),
+    path('member/<str:member_name>/', views.member, name='member')
 ]

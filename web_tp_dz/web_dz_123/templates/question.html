@@ -1,30 +1,30 @@
+
 {% extends "layouts/base.html" %}
 {% load static %}
-
 {% block content %}
                 <div class = "col-8">
                     <article class = "card mb-3 border-0">
                         <div class="row g-0">
                             <div class = "col-2 me-4 mt-3">
                                 <div class="border mb-3" style = "height: 150px; width: 150px;">
-                                    <img src="img.jpg" class="img-fluid rounded-start" >
+                                    <img src="{% static 'avatar.jpg' %}" class="img-fluid rounded-start" >
                                 </div>
                                 <div class = "input-group flex-nowrap w-50">
-                                    <input type="number" value="5" class="form-control" />
+                                    <input type="number" value="{{question.rating}}" class="form-control" />
                                 </div>
                             </div>
                             <div class = "col">
                                 <div class="card-body">
                                     <h3 class = "card-title">
-                                        Why people think that Earth is flat?
+                                        {{question.title}}
                                     </h3>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                                    <p class="card-text">{{question.text}}</p>
                                 </div>
                                 <div class = "row p-3 mt-2">
                                      <div class = "col-8">
                                          <span>Tags: </span>
-                                         {% for tag in question.tags %}
-                                         <a href = "{% url "tag" tag%}">{{tag}}</a>
+                                         {% for tag in question.tag.all %}
+                                            <a href = "{% url "tag" tag%}">{{tag}}</a>
                                          {% endfor%}
                                      </div>
                                 </div>
@@ -34,16 +34,14 @@
 
                     <h3>Answers:</h3>
 
-                    {% for answer in answers %}
-                        {% include "layouts/answer.html" %}
-                    {% endfor %}
-
                     {% if answers %}
-                        {% include "layouts/pagination.html" with page_obj=answers %}
-                    {% endif %}
+                        {% for answer in answers %}
+                            {% include "layouts/answer.html" with item=answer %}
+                        {% endfor %}
 
-                    <h5 class = "mt-4">Answer the question:</h5>
-                    <textarea class="form-control mt-1 h-25" placeholder="Enter your answer here..."></textarea>
-                    <button type="button" class="btn btn-outline-primary mt-2 mb-5">Answer</button>
+                        {% include "layouts/pagination.html" with page_obj=answers %}
+                    {% else %}
+                        No answers yet
+                    {% endif %}
                 </div>
 {% endblock %}

@@ -2,11 +2,11 @@
 <article class = "card mb-3">
     <div class="row g-0">
         <div class = "col-2 p-3">
-            <div class="border w-100 mb-3" style="height: 100px">
+            <div class="border w-100 mb-3">
                 <img src="{% static 'avatar.jpg' %}" class="img-fluid rounded-start" >
             </div>
             <div class = "input-group flex-nowrap">
-                <input type="number" value="5" class="form-control" />
+                <input type="number" value="{{item.rating}}" class="form-control" />
             </div>
         </div>
         <div class = "col">
@@ -17,11 +17,11 @@
                 <p class="card-text">{{item.text}}</p>
             </div>
             <div class = "row p-3 mt-4">
-                 <a class = "col-4" href = "{% url "question" item.id %}">answer(3)</a>
+                 <a class = "col-4" href = "{% url "question" item.id %}">answers({{item.answers_count}})</a>
                  <div class = "col-8">
                     <span>Tags</span>
-                    {% for tag in question.tags %}
-                    <a href = "{% url "tag" tag%}">{{tag}}</a>
+                    {% for tag in item.tag.all %}
+                        <a href = "{% url "tag" tag%}">{{tag}}</a>
                     {% endfor%}
                  </div>
             </div>
