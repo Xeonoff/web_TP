@@ -1,55 +1,23 @@
 {% extends "layouts/base.html" %}
 {% load static %}
+{% load django_bootstrap5 %}
 {% block content %}
-            <h3>Settings</h3>
-            <p class = "text-danger fs-6 mt-3">Sorry, this email address already registred!</p>
-                <div class = "col-8">
-                    <div class = "row mt-2">
-                        <div class = "col-3">
-                            <p class = "text-start fs-5">Email</p>
-                        </div>
-                        <div class = "col-9">
-                            <input type="text" class = "form-control w-75" placeholder="Just_User@email.com">
-                        </div>
-                    </div>
-                    <div class = "row mt-2">
-                        <div class = "col-3">
-                            <p class = "text-start fs-5">NickName</p>
-                        </div>
-                        <div class = "col-9">
-                            <input type="text" class = "form-control w-75" placeholder="Just_User">
-                        </div>
-                    </div>
-                    <div class = "row mt-2">
-                        <div class = "col-3">
-                            <p class = "text-start fs-5">Password</p>
-                        </div>
-                        <div class = "col-9">
-                            <input type="password" class = "form-control w-75" placeholder="Enter your password...">
-                        </div>
-                    </div>
-                    <div class = "row mt-2">
-                        <div class = "col-3">
-                            <p class = "text-start fs-5">Repeat password</p>
-                        </div>
-                        <div class = "col-9">
-                            <input type="password" class = "form-control w-75" placeholder="Enter your password...">
-                        </div>
-                    </div>
-                    <div class = "row mt-2">
-                        <div class = "col-3">
-                            <p class = "text-start fs-5">Upload avatar</p>
-                        </div>
-                        <div>
-                            <img src="{% static 'avatar.jpg' %}" width = "200" height = "200">
-                        </div>
-                        <div class = "col-9">
-                            <div class="input-group mb-3 w-75">
-                                <input type="file" class="form-control" id="inputGroupFile02">
-                                <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                            </div>
-                            <button type="button" class="btn btn-outline-primary mt-2 w-25">Save changes</button>
-                        </div>
-                    </div>
+
+<div class="row">
+    <h1>Settings: {{form.username.value}} </h1>
+    <div class="col-8 mt-3">
+        <form style="margin-bottom: 50px;" method = "post" action = "{% url "settings" %}">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col">
+                    <hr width="640px">
+                    <button type="submit" class="btn btn-outline-primary mt-2 w-25">Save</button>
                 </div>
-{% endblock %}
+            </div>
+        </form>
+    </div>
+
+{% endblock content %}

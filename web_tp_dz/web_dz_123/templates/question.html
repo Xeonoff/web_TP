@@ -1,5 +1,5 @@
-
 {% extends "layouts/base.html" %}
+{% load django_bootstrap5 %}
 {% load static %}
 {% block content %}
                 <div class = "col-8">
@@ -24,7 +24,7 @@
                                      <div class = "col-8">
                                          <span>Tags: </span>
                                          {% for tag in question.tag.all %}
-                                            <a href = "{% url "tag" tag%}">{{tag}}</a>
+                                            <a href="{% url 'tag' tag.name|urlencode %}">{{ tag.name }}</a>
                                          {% endfor%}
                                      </div>
                                 </div>
@@ -43,5 +43,13 @@
                     {% else %}
                         No answers yet
                     {% endif %}
+                    <h5 class = "mt-4">Answer the question:</h5>
+                    <form method="post" action="{% url 'question' question.id %}">
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        <button type="submit" class="btn btn-outline-primary mt-2 mb-5">Answer</button>
+                    </form>
                 </div>
+                <script src="{% static "js/question-like.js" %}"></script>
+                <script src="{% static "js/answer.js" %}"></script>
 {% endblock %}

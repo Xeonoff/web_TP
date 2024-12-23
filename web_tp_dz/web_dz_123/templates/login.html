@@ -1,26 +1,13 @@
 {% extends "layouts/base.html" %}
+{% load django_bootstrap5 %}
 
 {% block content %}
             <h3>Log In</h3>
-            <p class = "text-danger fs-6 mt-3">Sorry, wrong login or password!</p>
                 <div class = "col-8">
-                    <div class = "row mt-2">
-                        <div class = "col-2">
-                            <p class = "text-start fs-4">Login</p>
-                        </div>
-                        <div class = "col-10">
-                            <input type="text" class = "form-control w-25" placeholder="Enter your login...">
-                        </div>
-                    </div>
-                    <div class = "row mt-2">
-                        <div class = "col-2">
-                            <p class = "text-start fs-4">Password</p>
-                        </div>
-                        <div class = "col-10">
-                            <input type="password" class = "form-control w-25" placeholder="Enter your password...">
-                            <button type="button" class="btn btn-outline-primary mt-4 w-25">Log in!</button>
-                            <a href = "{% url "signup" %}" class = "d-block mt-3">Create new account</a>
-                        </div>
-                    </div>
+                    <form method="post" action="{% url 'login' %}?next={{redirect_after}}">
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        <button type="submit" class="btn btn-outline-primary mt-4 w-25">Log in!</button>
+                    </form>
                 </div>
 {% endblock %}

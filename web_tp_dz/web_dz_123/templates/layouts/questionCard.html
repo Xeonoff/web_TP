@@ -5,8 +5,10 @@
             <div class="border w-100 mb-3">
                 <img src="{% static 'avatar.jpg' %}" class="img-fluid rounded-start" >
             </div>
-            <div class = "input-group flex-nowrap">
-                <input type="number" value="{{item.rating}}" class="form-control" />
+            <div class="question-like-control input-group flex-nowrap" data-question-id="{{ item.id }}">
+                <button class="like-btn btn btn-outline-success btn-sm">Like</button>
+                <span class="form-control like-counter" style="white-space: nowrap; text-align: center;">{{ item.rating }}</span>
+                <button class="dislike-btn btn btn-outline-danger btn-sm">Dislike</button>
             </div>
         </div>
         <div class = "col">
@@ -21,7 +23,7 @@
                  <div class = "col-8">
                     <span>Tags</span>
                     {% for tag in item.tag.all %}
-                        <a href = "{% url "tag" tag%}">{{tag}}</a>
+                        <a href="{% url 'tag' tag.name|urlencode %}">{{ tag.name }}</a>
                     {% endfor%}
                  </div>
             </div>
