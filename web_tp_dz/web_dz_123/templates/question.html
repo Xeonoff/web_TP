@@ -50,6 +50,5 @@
                         <button type="submit" class="btn btn-outline-primary mt-2 mb-5">Answer</button>
                     </form>
                 </div>
-                <script src="{% static "js/question-like.js" %}"></script>
-                <script src="{% static "js/answer.js" %}"></script>
+                <script src="{% static "js/answer.js" %}?v={{ STATIC_VERSION }}"></script>
 {% endblock %}

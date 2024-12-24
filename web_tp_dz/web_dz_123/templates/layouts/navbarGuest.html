@@ -2,7 +2,7 @@
 <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="{% url "index" %}">
-            <img src="{% static 'avatar.jpg' %}" width="30" height="30" class="d-inline-block align-text-top">
+            <img src="{% static 'logo.jpg' %}" width="30" height="30" class="d-inline-block align-text-top">
             AskMe
           </a>
       <form class="d-flex" role="search" action = "{% url "ask" %}">
@@ -12,7 +12,11 @@
       {% if user.is_authenticated %}
         <div class = "d-flex justify-content-between gap-3"> 
           <div>
-              <img src="{{ user.user_profile.avatar.url }}" width = "50" height = "50">
+            {% if user.user_profile.avatar %}
+              <img src="{{ user.user_profile.avatar.url }}" width="50" height="50" style="border-radius: 50%;">
+            {% else %}
+              <img src="{% static 'default_avatar.jpg' %}" width="50" height="50" style="border-radius: 50%;">
+            {% endif %}
           </div>
           <div class = "d-flex flex-column justify-content-between"> 
               <div>{{ user.username }}</div>

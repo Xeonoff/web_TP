@@ -48,7 +48,9 @@ function main() {
         dislikeButton.onclick = () => likeOrDislike(false)
     }
 
-    const questionId = document.querySelector('.question-like-control').dataset.questionId
+    const url = window.location.href;
+    const parts = url.split('/');
+    const questionId = parts[parts.length - 1];
     const correctAnswerCheckboxes = document.querySelectorAll('.correct-answer-checkbox')
     for (const checkbox of correctAnswerCheckboxes) {
         const answerId = checkbox.dataset.answerId

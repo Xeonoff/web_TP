@@ -88,10 +88,9 @@ class SettingsForm(forms.ModelForm):#TODO
         self._user.save()
 
         profile = Profile.objects.get(user=self._user)
-        if self.cleaned_data['avatar'] is not None:
+        if self.cleaned_data.get('avatar'):  # Проверяем не пусто ли поле avatar
             profile.avatar = self.cleaned_data['avatar']
             profile.save()
-
         return self._user
 
 class AskForm(forms.ModelForm):

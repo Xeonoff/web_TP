@@ -6,7 +6,7 @@
 <div class="row">
     <h1>Settings: {{form.username.value}} </h1>
     <div class="col-8 mt-3">
-        <form style="margin-bottom: 50px;" method = "post" action = "{% url "settings" %}">
+        <form style="margin-bottom: 50px;" method = "post" enctype="multipart/form-data" action = "{% url "settings" %}">
             {% csrf_token %}
             {% bootstrap_form form %}
 

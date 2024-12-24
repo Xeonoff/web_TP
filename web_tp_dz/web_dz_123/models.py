@@ -48,8 +48,8 @@ class UserSerializer(models.Manager):
         return self.get(nickname=User_name)
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.PROTECT)
-    avatar = models.ImageField(null=True, blank=True,upload_to="uploads/")
+    user = models.OneToOneField(User, on_delete=models.PROTECT, related_name='user_profile')
+    avatar = models.ImageField(null=True, blank=True,upload_to="images/")
     nickname = models.CharField(max_length=255)
     activity = models.IntegerField(default=0)
     likes_count_answer = models.IntegerField(default=0)
